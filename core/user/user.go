@@ -1,0 +1,25 @@
+package user
+
+// User repräsentiert einen Benutzer in unserem sozialen Netzwerk.
+type User struct {
+	Nickname string
+	Name     string
+	Surname  string
+	Contacts []int
+}
+
+// New erstellt einen neuen Benutzer mit dem angegebenen Nickname
+// sowie Vor- und Nachname. Die Kontaktliste ist zunächst leer.
+func New(nickname string, name string, surname string) *User {
+	return &User{
+		Nickname: nickname,
+		Name:     name,
+		Surname:  surname,
+		Contacts: []int{},
+	}
+}
+
+// AddContact fügt einen Kontakt zur Kontaktliste des Benutzers hinzu.
+func (u *User) AddContact(contactID int) {
+	u.Contacts = append(u.Contacts, contactID)
+}
