@@ -13,3 +13,7 @@ und ihre Verbindungen zu erhalten. Beispiele:
 - Kontakte eines Benutzers finden
 - gemeinsame Kontakte zwischen zwei Benutzern ermitteln
 - Gruppen von Benutzern identifizieren, die besonders stark miteinander verbunden sind
+
+## Datentypen
+
+![Überblick über die Datentypen](doc/types.excalidraw.svg)
