@@ -24,7 +24,7 @@ func New(key func(e *user.User) string) *Index {
 // ById erstellt einen Index, der Benutzer anhand ihrer ID sortiert.
 func ById() *Index {
 	return New(func(u *user.User) string {
-		return fmt.Sprintf("%d", u.Id)
+		return u.Id
 	})
 }
 

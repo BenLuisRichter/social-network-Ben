@@ -2,26 +2,26 @@ package user
 
 // User repräsentiert einen Benutzer in unserem sozialen Netzwerk.
 type User struct {
-	Id       int // TODO: Make this a string.
+	Id       string
 	Nickname string
 	Name     string
 	Surname  string
-	Contacts []int
+	Contacts []string
 }
 
 // New erstellt einen neuen Benutzer mit dem angegebenen Nickname
 // sowie Vor- und Nachname. Die Kontaktliste ist zunächst leer.
-func New(id int, nickname string, name string, surname string) *User {
+func New(id string, nickname string, name string, surname string) *User {
 	return &User{
 		Id:       id,
 		Nickname: nickname,
 		Name:     name,
 		Surname:  surname,
-		Contacts: []int{},
+		Contacts: []string{},
 	}
 }
 
 // AddContact fügt einen Kontakt zur Kontaktliste des Benutzers hinzu.
-func (u *User) AddContact(contactID int) {
+func (u *User) AddContact(contactID string) {
 	u.Contacts = append(u.Contacts, contactID)
 }

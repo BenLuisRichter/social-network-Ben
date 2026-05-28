@@ -1,7 +1,6 @@
 package database
 
 import (
-	"fmt"
 	"social-network/core/user"
 )
 
@@ -26,11 +25,11 @@ func (db *Database) GetContacts(id string, depth int) []user.User {
 	u := e.User()
 	direct_contacts := []user.User{}
 	indirect_contacts := []user.User{}
-	visited := make(map[int]bool)
+	visited := make(map[string]bool)
 	visited[u.Id] = true
 
 	for _, contactID := range u.Contacts {
-		if c := users.Find(fmt.Sprintf("%d", contactID)); c != nil {
+		if c := users.Find(contactID); c != nil {
 			direct_contacts = append(direct_contacts, *c.User())
 		}
 	}
@@ -39,7 +38,7 @@ func (db *Database) GetContacts(id string, depth int) []user.User {
 		visited[c.Id] = true
 		result = append(result, c)
 
-		indirect_contacts = append(indirect_contacts, db.GetContacts(fmt.Sprintf("%d", c.Id), depth-1)...)
+		indirect_contacts = append(indirect_contacts, db.GetContacts(c.Id, depth-1)...)
 	}
 
 	for _, c := range indirect_contacts {
@@ -57,9 +56,9 @@ func (db *Database) GetContacts(id string, depth int) []user.User {
 //   - `id`: Die ID des Benutzers, dessen Kontakt-IDs abgerufen werden sollen.
 //   - `depth`: Die Anzahl der Ebenen von Kontakten, die berücksichtigt werden sollen.
 //     Eine Tiefe von 1 bedeutet nur direkte Kontakte, 2 bedeutet direkte Kontakte und deren Kontakte usw.
-func (db *Database) GetContactIds(id string, depth int) []int {
+func (db *Database) GetContactIds(id string, depth int) []string {
 	contacts := db.GetContacts(id, depth)
-	contact_ids := []int{}
+	contact_ids := []string{}
 
 	for _, c := range contacts {
 		contact_ids = append(contact_ids, c.Id)
