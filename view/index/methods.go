@@ -16,9 +16,9 @@ func (idx *Index) Insert(e *user.User) {
 		currentKey := idx.key(current.User)
 
 		if key < currentKey {
-			current = current.LeftChild()
+			current = current.Left
 		} else {
-			current = current.RightChild()
+			current = current.Right
 		}
 	}
 
@@ -37,9 +37,9 @@ func (idx *Index) Find(key string) *element.Element {
 		if key == currentKey {
 			return current
 		} else if key < currentKey {
-			current = current.LeftChild()
+			current = current.Left
 		} else {
-			current = current.RightChild()
+			current = current.Right
 		}
 	}
 	// end:solution

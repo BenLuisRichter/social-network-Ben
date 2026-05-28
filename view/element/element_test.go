@@ -12,11 +12,11 @@ func TestElement_IsEmpty(t *testing.T) {
 		t.Errorf("Expected empty element")
 	}
 
-	if e1.LeftChild() != nil {
+	if e1.Left != nil {
 		t.Errorf("Expected left child to be nil for empty element")
 	}
 
-	if e1.RightChild() != nil {
+	if e1.Right != nil {
 		t.Errorf("Expected right child to be nil for empty element")
 	}
 }
@@ -45,11 +45,11 @@ func TestElement_SetUser(t *testing.T) {
 		t.Errorf("Expected user surname to be 'Turing', got '%s'", e1.User.Surname)
 	}
 
-	if !e1.left.IsEmpty() {
+	if !e1.Left.IsEmpty() {
 		t.Errorf("Expected left child to be empty after setting user")
 	}
 
-	if !e1.right.IsEmpty() {
+	if !e1.Right.IsEmpty() {
 		t.Errorf("Expected right child to be empty after setting user")
 	}
 }
@@ -58,8 +58,8 @@ func TestElement_List(t *testing.T) {
 	root := Empty()
 
 	root.SetUser(user.New("2", "Bob", "Bob", "Builder"))
-	root.LeftChild().SetUser(user.New("1", "Al", "Alan", "Turing"))
-	root.RightChild().SetUser(user.New("3", "Charlie", "Charlie", "Chocolate"))
+	root.Left.SetUser(user.New("1", "Al", "Alan", "Turing"))
+	root.Right.SetUser(user.New("3", "Charlie", "Charlie", "Chocolate"))
 
 	users := root.List()
 

@@ -20,10 +20,10 @@ func TestIndex_Insert(t *testing.T) {
 	if idx.root.User != u2 {
 		t.Errorf("Expected root to be u2")
 	}
-	if idx.root.LeftChild().User != u1 {
+	if idx.root.Left.User != u1 {
 		t.Errorf("Expected left child to be u1")
 	}
-	if idx.root.RightChild().User != u3 {
+	if idx.root.Right.User != u3 {
 		t.Errorf("Expected right child to be u3")
 	}
 }

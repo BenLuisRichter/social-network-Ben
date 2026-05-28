@@ -5,16 +5,16 @@ import "social-network/core/user"
 // Element ist ein Element in einem binären Suchbaum, der Benutzer enthält.
 type Element struct {
 	User  *user.User
-	left  *Element
-	right *Element
+	Left  *Element
+	Right *Element
 }
 
 // Empty erzeugt ein neues leeres Element.
 func Empty() *Element {
 	return &Element{
 		User:  nil,
-		left:  nil,
-		right: nil,
+		Left:  nil,
+		Right: nil,
 	}
 }
 
@@ -22,7 +22,7 @@ func Empty() *Element {
 // Ein Element ist leer, wenn irgendeines der Felder nil ist.
 func (e *Element) IsEmpty() bool {
 	// begin:solution
-	return e.User == nil || e.left == nil || e.right == nil
+	return e.User == nil || e.Left == nil || e.Right == nil
 	// end:solution
 }
 
@@ -36,20 +36,10 @@ func (e *Element) SetUser(u *user.User) {
 	e.User = u
 
 	if e.IsEmpty() {
-		e.left = Empty()
-		e.right = Empty()
+		e.Left = Empty()
+		e.Right = Empty()
 	}
 	// end:solution
-}
-
-// LeftChild gibt das linke Kind dieses Elements zurück.
-func (e *Element) LeftChild() *Element {
-	return e.left
-}
-
-// RightChild gibt das rechte Kind dieses Elements zurück.
-func (e *Element) RightChild() *Element {
-	return e.right
 }
 
 // List gibt eine Liste aller Benutzer in diesem Element und seinen Kindern
@@ -62,9 +52,9 @@ func (e *Element) List() []*user.User {
 		return users
 	}
 
-	users = append(users, e.LeftChild().List()...)
+	users = append(users, e.Left.List()...)
 	users = append(users, e.User)
-	users = append(users, e.RightChild().List()...)
+	users = append(users, e.Right.List()...)
 	// end:solution
 
 	return users
