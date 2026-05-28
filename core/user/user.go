@@ -23,5 +23,7 @@ func New(id string, nickname string, name string, surname string) *User {
 
 // AddContact fügt einen Kontakt zur Kontaktliste des Benutzers hinzu.
 func (u *User) AddContact(contactID string) {
+	// begin:solution
 	u.Contacts = append(u.Contacts, contactID)
+	// end:solution
 }

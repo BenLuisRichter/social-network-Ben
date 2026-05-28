@@ -10,6 +10,7 @@ import (
 func (db *Database) GetDirectContacts(id string) []user.User {
 	result := []user.User{}
 
+	// begin:solution
 	users := db.UsersById()
 	e := users.Find(id)
 	if e == nil {
@@ -21,6 +22,7 @@ func (db *Database) GetDirectContacts(id string) []user.User {
 			result = append(result, *c.User)
 		}
 	}
+	// end:solution
 
 	return result
 }
@@ -29,13 +31,16 @@ func (db *Database) GetDirectContacts(id string) []user.User {
 // Parameter:
 //   - `id`: Die ID des Benutzers, dessen direkte Kontakt-IDs abgerufen werden sollen.
 func (db *Database) GetDirectContactIds(id string) []string {
-	contacts := db.GetDirectContacts(id)
 	contact_ids := []string{}
+
+	// begin:solution
+	contacts := db.GetDirectContacts(id)
 
 	for _, c := range contacts {
 		contact_ids = append(contact_ids, c.Id)
 	}
 
+	// end:solution
 	return contact_ids
 }
 
@@ -47,6 +52,7 @@ func (db *Database) GetDirectContactIds(id string) []string {
 func (db *Database) GetContacts(id string, depth int) []user.User {
 	result := []user.User{}
 
+	// begin:solution
 	if depth < 1 {
 		return result
 	}
@@ -68,6 +74,7 @@ func (db *Database) GetContacts(id string, depth int) []user.User {
 			result = append(result, c)
 		}
 	}
+	// end:solution
 
 	return result
 }
@@ -78,12 +85,15 @@ func (db *Database) GetContacts(id string, depth int) []user.User {
 //   - `depth`: Die Anzahl der Ebenen von Kontakten, die berücksichtigt werden sollen.
 //     Eine Tiefe von 1 bedeutet nur direkte Kontakte, 2 bedeutet direkte Kontakte und deren Kontakte usw.
 func (db *Database) GetContactIds(id string, depth int) []string {
-	contacts := db.GetContacts(id, depth)
 	contact_ids := []string{}
+
+	// begin:solution
+	contacts := db.GetContacts(id, depth)
 
 	for _, c := range contacts {
 		contact_ids = append(contact_ids, c.Id)
 	}
+	// end:solution
 
 	return contact_ids
 }

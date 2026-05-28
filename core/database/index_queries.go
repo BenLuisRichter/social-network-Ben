@@ -8,9 +8,11 @@ import (
 func (db *Database) UsersById() *index.Index {
 	idx := index.ById()
 
+	// begin:solution
 	for _, u := range db.Users {
 		idx.Insert(u)
 	}
+	// end:solution
 
 	return idx
 }
@@ -19,9 +21,11 @@ func (db *Database) UsersById() *index.Index {
 func (db *Database) UsersByNickname() *index.Index {
 	idx := index.ByNickname()
 
+	// begin:solution
 	for _, u := range db.Users {
 		idx.Insert(u)
 	}
+	// end:solution
 
 	return idx
 }
@@ -30,9 +34,11 @@ func (db *Database) UsersByNickname() *index.Index {
 func (db *Database) UsersByName() *index.Index {
 	idx := index.ByName()
 
+	// begin:solution
 	for _, u := range db.Users {
 		idx.Insert(u)
 	}
+	// end:solution
 
 	return idx
 }
@@ -41,9 +47,11 @@ func (db *Database) UsersByName() *index.Index {
 func (db *Database) UsersBySurname() *index.Index {
 	idx := index.BySurname()
 
+	// begin:solution
 	for _, u := range db.Users {
 		idx.Insert(u)
 	}
+	// end:solution
 
 	return idx
 }

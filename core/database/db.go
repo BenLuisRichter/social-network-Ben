@@ -18,5 +18,7 @@ func New() *Database {
 
 // AddUser fügt einen neuen Benutzer zur Datenbank hinzu.
 func (db *Database) AddUser(u *user.User) {
+	// begin:solution
 	db.Users = append(db.Users, u)
+	// end:solution
 }

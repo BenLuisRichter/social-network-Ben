@@ -8,6 +8,7 @@ import (
 
 // Insert fügt einen neuen Benutzer in den Index ein.
 func (idx *Index) Insert(e *user.User) {
+	// begin:solution
 	current := idx.root
 
 	for !current.IsEmpty() {
@@ -22,10 +23,12 @@ func (idx *Index) Insert(e *user.User) {
 	}
 
 	current.SetUser(e)
+	// end:solution
 }
 
 // Find sucht einen Benutzer im Index anhand eines Schlüssels.
 func (idx *Index) Find(key string) *element.Element {
+	// begin:solution
 	current := idx.root
 
 	for !current.IsEmpty() {
@@ -39,28 +42,34 @@ func (idx *Index) Find(key string) *element.Element {
 			current = current.RightChild()
 		}
 	}
+	// end:solution
 
 	return nil
 }
 
 // List liefert alle Benutzer im Index in sortierter Reihenfolge.
 func (idx *Index) List() []*user.User {
+	// begin:solution
 	return idx.root.List()
+	// end:solution
 }
 
 // Keys liefert eine Liste aller Schlüssel im Index in sortierter Reihenfolge.
 func (idx *Index) Keys() []string {
-	users := idx.List()
-	keys := make([]string, len(users))
+	keys := []string{}
 
-	for i, u := range users {
-		keys[i] = idx.key(u)
+	// begin:solution
+	for _, u := range idx.List() {
+		keys = append(keys, idx.key(u))
 	}
+	// end:solution
 
 	return keys
 }
 
 // String gibt eine menschenlesbare Listen-Darstellung aller Schlüssel im Index zurück.
 func (idx *Index) String() string {
+	// begin:solution
 	return fmt.Sprintf("%v", idx.Keys())
+	// end:solution
 }
