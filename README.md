@@ -7,13 +7,9 @@ Es werden Basis-Datentypen für Benutzer und deren Beziehungen definiert
 und in einer allgmeinen Datenstruktur gespeichert, die es ermöglicht,
 die Benutzer anhand verschiedener Suchkriterien auffindbar zu machen.
 
-Außerdem werden Abfragemöglichkeiten implementiert, um Informationen über die Benutzer
-und ihre Verbindungen zu erhalten. Beispiele:
-
-- Kontakte eines Benutzers finden
-- gemeinsame Kontakte zwischen zwei Benutzern ermitteln
-- Gruppen von Benutzern identifizieren, die besonders stark miteinander verbunden sind
+Außerdem wird eine Abfragemöglichkeit implementiert, um Informationen über die
+Kontakte eines Benutzers zu erhalten.
 
 ## Datentypen
 
-![Überblick über die Datentypen](doc/types.excalidraw.svg)
+![Überblick über die Datentypen](types.excalidraw.svg)
