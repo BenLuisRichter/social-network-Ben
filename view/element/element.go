@@ -21,32 +21,18 @@ func Empty() *Element {
 // IsEmpty prüft, ob dieses Element leer ist.
 // Ein Element ist leer, wenn irgendeines der Felder nil ist.
 func (e *Element) IsEmpty() bool {
-	// Hinweis:
-	// - Prüfen Sie, ob `e.User`, `e.Left` oder `e.Right` nil ist. Wenn eines davon nil ist, ist dieses Element leer.
-
 	// TODO
 	return false
 }
 
 // SetUser setzt den Benutzer in diesem Element.
 func (e *Element) SetUser(u *user.User) {
-	// Hinweis:
-	// - Wenn `u` nil ist, soll dieses Element leer bleiben, also tun Sie nichts.
-	// - Andernfalls setzen Sie das `User`-Feld dieses Elements auf `u`.
-	// - Wenn dieses Element vorher leer war, müssen Sie auch die Kinder dieses Elements auf neue leere Elemente setzen.
-
 	// TODO
 }
 
 // List gibt eine Liste aller Benutzer in diesem Element und seinen Kindern
 // in sortierter Reihenfolge zurück.
 func (e *Element) List() []*user.User {
-	// Hinweis:
-	// - Wenn dieses Element leer ist, geben Sie eine leere Liste zurück.
-	// - Andernfalls rufen Sie `List` rekursiv auf dem linken Kind auf, fügen Sie den Benutzer dieses Elements
-	//   zur Liste hinzu und rufen Sie `List` rekursiv auf dem rechten Kind auf.
-	// - Kombinieren Sie die Ergebnisse zu einer einzigen Liste.
-
 	users := []*user.User{}
 
 	// TODO
