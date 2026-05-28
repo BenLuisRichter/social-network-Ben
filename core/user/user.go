@@ -2,7 +2,7 @@ package user
 
 // User repräsentiert einen Benutzer in unserem sozialen Netzwerk.
 type User struct {
-	Id       int
+	Id       int // TODO: Make this a string.
 	Nickname string
 	Name     string
 	Surname  string

@@ -2,7 +2,6 @@ package database
 
 import (
 	"fmt"
-	"social-network/core/user"
 )
 
 func ExampleDatabase_UsersById() {
@@ -43,14 +42,4 @@ func ExampleDatabase_UsersBySurname() {
 
 	// Output:
 	// [Einbildung Mustermann Nym]
-}
-
-func testdata() *Database {
-	db := New()
-
-	db.AddUser(user.New(1, "michkenntjeder", "Max", "Mustermann"))
-	db.AddUser(user.New(2, "zombie43", "Arno", "Nym"))
-	db.AddUser(user.New(3, "superstar123", "Eva", "Einbildung"))
-
-	return db
 }
