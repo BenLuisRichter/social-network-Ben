@@ -18,17 +18,7 @@ func (db *Database) GetDirectContacts(id string) []user.User {
 
 	result := []user.User{}
 
-	users := db.UsersById()
-	e := users.Find(id)
-	if e == nil {
-		return result
-	}
-
-	for _, contactID := range e.User.Contacts {
-		if c := users.Find(contactID); c != nil {
-			result = append(result, *c.User)
-		}
-	}
+	// TODO
 
 	return result
 }
@@ -43,11 +33,7 @@ func (db *Database) GetDirectContactIds(id string) []string {
 
 	contact_ids := []string{}
 
-	contacts := db.GetDirectContacts(id)
-
-	for _, c := range contacts {
-		contact_ids = append(contact_ids, c.Id)
-	}
+	// TODO
 
 	return contact_ids
 }
@@ -67,27 +53,7 @@ func (db *Database) GetContacts(id string, depth int) []user.User {
 
 	result := []user.User{}
 
-	if depth < 1 {
-		return result
-	}
-
-	indirect_contacts := []user.User{}
-	visited := make(map[string]bool)
-	visited[id] = true
-
-	for _, c := range db.GetDirectContacts(id) {
-		visited[c.Id] = true
-		result = append(result, c)
-
-		indirect_contacts = append(indirect_contacts, db.GetContacts(c.Id, depth-1)...)
-	}
-
-	for _, c := range indirect_contacts {
-		if !visited[c.Id] {
-			visited[c.Id] = true
-			result = append(result, c)
-		}
-	}
+	// TODO
 
 	return result
 }
@@ -104,11 +70,7 @@ func (db *Database) GetContactIds(id string, depth int) []string {
 
 	contact_ids := []string{}
 
-	contacts := db.GetContacts(id, depth)
-
-	for _, c := range contacts {
-		contact_ids = append(contact_ids, c.Id)
-	}
+	// TODO
 
 	return contact_ids
 }

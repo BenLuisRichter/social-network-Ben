@@ -57,13 +57,7 @@ func (e *Element) List() []*user.User {
 
 	users := []*user.User{}
 
-	if e.IsEmpty() {
-		return users
-	}
-
-	users = append(users, e.Left.List()...)
-	users = append(users, e.User)
-	users = append(users, e.Right.List()...)
+	// TODO
 
 	return users
 }

@@ -21,5 +21,5 @@ func (db *Database) AddUser(u *user.User) {
 	// Hinweis:
 	// - Fügen Sie den neuen Benutzer mittels `append` zur Liste `db.Users` hinzu.
 
-	db.Users = append(db.Users, u)
+	// TODO
 }

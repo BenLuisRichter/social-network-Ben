@@ -1,7 +1,6 @@
 package index
 
 import (
-	"fmt"
 	"social-network/core/user"
 	"social-network/view/element"
 )
@@ -18,20 +17,7 @@ func (idx *Index) Insert(u *user.User) {
 	//   die Sie mit `idx.key(e)` aufrufen können.
 	//   Genauer: Die `key`-Funktion bestimmt für einen `User` den Schlüssel, nach dem sortiert wird.
 
-	current := idx.root
-
-	for !current.IsEmpty() {
-		key := idx.key(u)
-		currentKey := idx.key(current.User)
-
-		if key < currentKey {
-			current = current.Left
-		} else {
-			current = current.Right
-		}
-	}
-
-	current.SetUser(u)
+	// TODO
 }
 
 // Find sucht einen Benutzer im Index anhand eines Schlüssels.
@@ -44,19 +30,7 @@ func (idx *Index) Find(key string) *element.Element {
 	//   Diese Sortierreihenfolge wird durch die `key`-Funktion des Index bestimmt,
 	//   die Sie mit `idx.key(e)` aufrufen können.
 
-	current := idx.root
-
-	for !current.IsEmpty() {
-		currentKey := idx.key(current.User)
-
-		if key == currentKey {
-			return current
-		} else if key < currentKey {
-			current = current.Left
-		} else {
-			current = current.Right
-		}
-	}
+	// TODO
 
 	return nil
 }
@@ -66,7 +40,8 @@ func (idx *Index) List() []*user.User {
 	// Hinweis:
 	// - Rufen Sie die `List`-Methode der Wurzel auf, um alle Benutzer in sortierter Reihenfolge zu erhalten.
 
-	return idx.root.List()
+	// TODO
+	return nil
 }
 
 // Keys liefert eine Liste aller Schlüssel im Index in sortierter Reihenfolge.
@@ -77,9 +52,7 @@ func (idx *Index) Keys() []string {
 
 	keys := []string{}
 
-	for _, u := range idx.List() {
-		keys = append(keys, idx.key(u))
-	}
+	// TODO
 
 	return keys
 }
@@ -90,5 +63,6 @@ func (idx *Index) String() string {
 	// - Rufen Sie die `Keys`-Methode des Index auf, um alle Schlüssel in sortierter Reihenfolge zu erhalten.
 	// - Verwandeln Sie diese Liste mittels `fmt.Sprintf` in einen String.
 
-	return fmt.Sprintf("%v", idx.Keys())
+	// TODO
+	return ""
 }

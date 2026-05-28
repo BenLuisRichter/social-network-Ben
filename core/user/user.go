@@ -26,5 +26,5 @@ func (u *User) AddContact(contactID string) {
 	// Hinweis:
 	// - Fügen Sie die neue ID mittels `append` zur Kontaktliste von `u` hinzu.
 
-	u.Contacts = append(u.Contacts, contactID)
+	// TODO
 }
