@@ -45,6 +45,12 @@ func (e *Element) SetUser(u *user.User) {
 // List gibt eine Liste aller Benutzer in diesem Element und seinen Kindern
 // in sortierter Reihenfolge zurück.
 func (e *Element) List() []*user.User {
+	// Hinweis:
+	// - Wenn dieses Element leer ist, geben Sie eine leere Liste zurück.
+	// - Andernfalls rufen Sie `List` rekursiv auf dem linken Kind auf, fügen Sie den Benutzer dieses Elements
+	//   zur Liste hinzu und rufen Sie `List` rekursiv auf dem rechten Kind auf.
+	// - Kombinieren Sie die Ergebnisse zu einer einzigen Liste.
+
 	users := []*user.User{}
 
 	// begin:solution
