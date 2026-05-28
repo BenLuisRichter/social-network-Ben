@@ -21,6 +21,13 @@ func New(key func(e *user.User) string) *Index {
 	}
 }
 
+// ById erstellt einen Index, der Benutzer anhand ihrer ID sortiert.
+func ById() *Index {
+	return New(func(u *user.User) string {
+		return fmt.Sprintf("%d", u.Id)
+	})
+}
+
 // ByNickname erstellt einen Index, der Benutzer anhand ihres Nickname sortiert.
 func ByNickname() *Index {
 	return New(func(u *user.User) string {

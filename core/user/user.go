@@ -2,6 +2,7 @@ package user
 
 // User repräsentiert einen Benutzer in unserem sozialen Netzwerk.
 type User struct {
+	Id       int
 	Nickname string
 	Name     string
 	Surname  string
@@ -10,8 +11,9 @@ type User struct {
 
 // New erstellt einen neuen Benutzer mit dem angegebenen Nickname
 // sowie Vor- und Nachname. Die Kontaktliste ist zunächst leer.
-func New(nickname string, name string, surname string) *User {
+func New(id int, nickname string, name string, surname string) *User {
 	return &User{
+		Id:       id,
 		Nickname: nickname,
 		Name:     name,
 		Surname:  surname,
