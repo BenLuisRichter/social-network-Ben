@@ -18,7 +18,6 @@ func (idx *Index) Insert(u *user.User) {
 	//   die Sie mit `idx.key(e)` aufrufen können.
 	//   Genauer: Die `key`-Funktion bestimmt für einen `User` den Schlüssel, nach dem sortiert wird.
 
-	// begin:solution
 	current := idx.root
 
 	for !current.IsEmpty() {
@@ -33,7 +32,6 @@ func (idx *Index) Insert(u *user.User) {
 	}
 
 	current.SetUser(u)
-	// end:solution
 }
 
 // Find sucht einen Benutzer im Index anhand eines Schlüssels.
@@ -46,7 +44,6 @@ func (idx *Index) Find(key string) *element.Element {
 	//   Diese Sortierreihenfolge wird durch die `key`-Funktion des Index bestimmt,
 	//   die Sie mit `idx.key(e)` aufrufen können.
 
-	// begin:solution
 	current := idx.root
 
 	for !current.IsEmpty() {
@@ -60,7 +57,6 @@ func (idx *Index) Find(key string) *element.Element {
 			current = current.Right
 		}
 	}
-	// end:solution
 
 	return nil
 }
@@ -70,9 +66,7 @@ func (idx *Index) List() []*user.User {
 	// Hinweis:
 	// - Rufen Sie die `List`-Methode der Wurzel auf, um alle Benutzer in sortierter Reihenfolge zu erhalten.
 
-	// begin:solution
 	return idx.root.List()
-	// end:solution
 }
 
 // Keys liefert eine Liste aller Schlüssel im Index in sortierter Reihenfolge.
@@ -83,11 +77,9 @@ func (idx *Index) Keys() []string {
 
 	keys := []string{}
 
-	// begin:solution
 	for _, u := range idx.List() {
 		keys = append(keys, idx.key(u))
 	}
-	// end:solution
 
 	return keys
 }
@@ -98,7 +90,5 @@ func (idx *Index) String() string {
 	// - Rufen Sie die `Keys`-Methode des Index auf, um alle Schlüssel in sortierter Reihenfolge zu erhalten.
 	// - Verwandeln Sie diese Liste mittels `fmt.Sprintf` in einen String.
 
-	// begin:solution
 	return fmt.Sprintf("%v", idx.Keys())
-	// end:solution
 }

@@ -21,14 +21,11 @@ func Empty() *Element {
 // IsEmpty prüft, ob dieses Element leer ist.
 // Ein Element ist leer, wenn irgendeines der Felder nil ist.
 func (e *Element) IsEmpty() bool {
-	// begin:solution
 	return e.User == nil || e.Left == nil || e.Right == nil
-	// end:solution
 }
 
 // SetUser setzt den Benutzer in diesem Element.
 func (e *Element) SetUser(u *user.User) {
-	// begin:solution
 	if u == nil {
 		return
 	}
@@ -39,7 +36,6 @@ func (e *Element) SetUser(u *user.User) {
 		e.Left = Empty()
 		e.Right = Empty()
 	}
-	// end:solution
 }
 
 // List gibt eine Liste aller Benutzer in diesem Element und seinen Kindern
@@ -53,7 +49,6 @@ func (e *Element) List() []*user.User {
 
 	users := []*user.User{}
 
-	// begin:solution
 	if e.IsEmpty() {
 		return users
 	}
@@ -61,7 +56,6 @@ func (e *Element) List() []*user.User {
 	users = append(users, e.Left.List()...)
 	users = append(users, e.User)
 	users = append(users, e.Right.List()...)
-	// end:solution
 
 	return users
 }
