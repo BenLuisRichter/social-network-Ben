@@ -24,7 +24,8 @@ func (e *Element) IsEmpty() bool {
 	// Hinweis:
 	// - Prüfen Sie, ob `e.User`, `e.Left` oder `e.Right` nil ist. Wenn eines davon nil ist, ist dieses Element leer.
 
-	return e.User == nil || e.Left == nil || e.Right == nil
+	// TODO
+	return false
 }
 
 // SetUser setzt den Benutzer in diesem Element.
@@ -34,16 +35,7 @@ func (e *Element) SetUser(u *user.User) {
 	// - Andernfalls setzen Sie das `User`-Feld dieses Elements auf `u`.
 	// - Wenn dieses Element vorher leer war, müssen Sie auch die Kinder dieses Elements auf neue leere Elemente setzen.
 
-	if u == nil {
-		return
-	}
-
-	e.User = u
-
-	if e.IsEmpty() {
-		e.Left = Empty()
-		e.Right = Empty()
-	}
+	// TODO
 }
 
 // List gibt eine Liste aller Benutzer in diesem Element und seinen Kindern
