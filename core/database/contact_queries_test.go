@@ -4,6 +4,19 @@ import (
 	"fmt"
 )
 
+func ExampleDatabase_GetDirectContactIds() {
+	db := testdata()
+
+	fmt.Println(db.GetDirectContactIds("1"))
+	fmt.Println(db.GetDirectContactIds("2"))
+	fmt.Println(db.GetDirectContactIds("3"))
+
+	// Output:
+	// [3]
+	// [1]
+	// [1 2]
+}
+
 func ExampleDatabase_GetContactIds_depth_1() {
 	db := testdata()
 

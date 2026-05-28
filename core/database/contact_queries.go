@@ -4,6 +4,43 @@ import (
 	"social-network/core/user"
 )
 
+// GetDirectContacts liefert eine Liste mit den direkten Kontakten eines Benutzers zurück.
+// Parameter:
+//   - `id`: Die ID des Benutzers, dessen direkte Kontakte abgerufen werden sollen.
+func (db *Database) GetDirectContacts(id string) []user.User {
+	result := []user.User{}
+
+	users := db.UsersById()
+	e := users.Find(id)
+	if e == nil {
+		return result
+	}
+
+	u := e.User()
+
+	for _, contactID := range u.Contacts {
+		if c := users.Find(contactID); c != nil {
+			result = append(result, *c.User())
+		}
+	}
+
+	return result
+}
+
+// GetDirectContactIds liefert eine Liste mit den IDs aller direkten Kontakte eines Benutzers zurück.
+// Parameter:
+//   - `id`: Die ID des Benutzers, dessen direkte Kontakt-IDs abgerufen werden sollen.
+func (db *Database) GetDirectContactIds(id string) []string {
+	contacts := db.GetDirectContacts(id)
+	contact_ids := []string{}
+
+	for _, c := range contacts {
+		contact_ids = append(contact_ids, c.Id)
+	}
+
+	return contact_ids
+}
+
 // GetContacts liefert eine Liste mit allen direkten und indirekten Kontakten eines Benutzers zurück.
 // Parameter:
 //   - `id`: Die ID des Benutzers, dessen Kontakte abgerufen werden sollen.
@@ -16,25 +53,11 @@ func (db *Database) GetContacts(id string, depth int) []user.User {
 		return result
 	}
 
-	users := db.UsersById()
-	e := users.Find(id)
-	if e == nil {
-		return result
-	}
-
-	u := e.User()
-	direct_contacts := []user.User{}
 	indirect_contacts := []user.User{}
 	visited := make(map[string]bool)
-	visited[u.Id] = true
+	visited[id] = true
 
-	for _, contactID := range u.Contacts {
-		if c := users.Find(contactID); c != nil {
-			direct_contacts = append(direct_contacts, *c.User())
-		}
-	}
-
-	for _, c := range direct_contacts {
+	for _, c := range db.GetDirectContacts(id) {
 		visited[c.Id] = true
 		result = append(result, c)
 
