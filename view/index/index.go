@@ -55,7 +55,7 @@ func (idx *Index) Insert(e *user.User) {
 
 	for !current.IsEmpty() {
 		key := idx.key(e)
-		currentKey := idx.key(current.User())
+		currentKey := idx.key(current.User)
 
 		if key < currentKey {
 			current = current.LeftChild()
@@ -72,7 +72,7 @@ func (idx *Index) Find(key string) *element.Element {
 	current := idx.root
 
 	for !current.IsEmpty() {
-		currentKey := idx.key(current.User())
+		currentKey := idx.key(current.User)
 
 		if key == currentKey {
 			return current

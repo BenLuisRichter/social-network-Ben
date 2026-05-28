@@ -16,11 +16,9 @@ func (db *Database) GetDirectContacts(id string) []user.User {
 		return result
 	}
 
-	u := e.User()
-
-	for _, contactID := range u.Contacts {
+	for _, contactID := range e.User.Contacts {
 		if c := users.Find(contactID); c != nil {
-			result = append(result, *c.User())
+			result = append(result, *c.User)
 		}
 	}
 
