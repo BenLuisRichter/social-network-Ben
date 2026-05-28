@@ -1,0 +1,18 @@
+{
+	"name": "Go",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"postCreateCommand": ".devcontainer/post-create.sh",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"golang.go",
+				"ms-toolsai.jupyter"
+			],
+			"settings": {
+				"github.copilot.chat.enabled": false
+			}
+		}
+	}
+}
